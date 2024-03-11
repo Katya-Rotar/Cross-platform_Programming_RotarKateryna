@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Taming Thymeleaf</title>
+    <title>Hello JVM world!</title>
     <link rel="stylesheet" th:href="@{/css/application.css}">
 </head>
 <body>
-<h1 th:text="${pageTitle}"></h1>
-<div class="mx-6">
-    <ul>
+<h1 th:text="${pageTitle}" class="text-4xl mx-4 mb-4 border-b-4 border-yellow-300"
+></h1>
+<div class="mx-4">
+    <ul class="list-disc mx-6 text-base">
         <li th:each="language : ${languages}">
             <span th:text="${language}"></span>
         </li>
