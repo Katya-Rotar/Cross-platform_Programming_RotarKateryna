@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en"
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/main}">
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taming Thymeleaf</title>
+    <link rel="stylesheet" th:href="@{/css/application.css}">
+</head>
 <body>
-<div layout:fragment="content">
-    <!-- Add content here -->
-    <div>Welcome to your Spring Boot with Thymeleaf project!</div>
-    <div>See <code>HELP.md</code> for instructions on how to get started.</div>
+<h1 th:text="${pageTitle}"></h1>
+<div class="mx-6">
+    <ul>
+        <li th:each="language : ${languages}">
+            <span th:text="${language}"></span>
+        </li>
+    </ul>
 </div>
-<th:block layout:fragment="script-content">
-    <!-- Add additional scripts there that are only needed for this page (Application wide scripts should be added in layout/main.html) --->
-</th:block>
 </body>
 </html>
