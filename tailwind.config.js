@@ -2,8 +2,12 @@
 module.exports = {
   content: ['./src/main/resources/templates/**/*.html'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'demo-green': 'darkseagreen'
+      }
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/container-queries'),require('daisyui'),require(
+      '@tailwindcss/forms'),require('@tailwindcss/typography')],
 }
-
