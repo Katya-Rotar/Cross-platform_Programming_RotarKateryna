@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--/*@thymesVar id="link" type="java.lang.String"*/-->
+<!--/*@thymesVar id="title" type="java.lang.String"*/-->
+<!--/*@thymesVar id="menuItem" type="java.lang.String"*/-->
+<!--/*@thymesVar id="activeMenuItem" type="java.lang.String"*/-->
+<a th:fragment="desktop-button(link, title, menuItem)"
+   th:href="${link}"
+   class="group flex items-center rounded-md px-2 py-2 text-sm font-
+  medium"
+   th:classappend="${activeMenuItem == menuItem}? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'">
+    [[${title}]]
+</a>
 </html>

@@ -38,46 +38,7 @@
     </div>
 </div>
 <script type="text/javascript" th:src="@{/webjars/alpinejs/dist/cdn.min.js}" defer></script>
-<script>
-    function sidebarMenu() {
-        return {
-            show: false,
-            openSidebar() {
-                this.show = true;
-            },
-            closeSidebar() {
-                this.show = false;
-            },
-            isVisible() {
-                return this.show === true;
-            }
-        };
-    }
-
-    function userPopupMenu() {
-        return {
-            show: false,
-            toggleVisibility() {
-                this.show = !this.show;
-            },
-            close() {
-                this.show = false;
-            },
-            isVisible() {
-                return this.show === true;
-            },
-            highlightMenuItem(event) {
-                event.target.classList.add('font-bold'); // Додаємо жирний стиль
-                event.target.classList.add('bg-gray-200'); // Змінюємо фон на темніший
-            },
-            resetMenuItem(event) {
-                event.target.classList.remove('font-bold'); // Видаляємо жирний стиль
-                event.target.classList.remove('bg-gray-200'); // Відновлюємо оригінальний фон
-            }
-        };
-    }
-    sidebarMenu();
-    userPopupMenu();
-</script>
+<script th:src="@{/js/user-popup-menu.js}"></script>
+<script th:src="@{/js/side-bar-menu.js}"></script>
 </body>
 </html>
