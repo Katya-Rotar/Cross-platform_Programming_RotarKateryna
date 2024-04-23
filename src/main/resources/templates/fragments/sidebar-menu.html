@@ -37,17 +37,13 @@
             </div>
 
             <div class="flex flex-shrink-0 items-end px-4">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                     alt="Your Company">
+                <img class="h-8 w-auto" src="https://i.ibb.co/27KYPMD/image.png" alt="Recipe Book">
             </div>
             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="space-y-1 px-2">
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Dashboard', menuItem='dashboard',icon='dashboard')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Team', menuItem='team', icon='team')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Projects', menuItem='projects',icon='projects')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Calendar', menuItem='calendar',icon='calendar')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Documents', menuItem='documents',icon='documents')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Reports', menuItem='reports',icon='reports')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/}, title='Головна', menuItem='home',icon='home')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/recipes}, title='Рецепти', menuItem='recipes', icon='recipes')}"></a>
+                    <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/addRecipe}, title='Додати рецепт', menuItem='addRecipe', icon='add')"></a>
                 </nav>
             </div>
         </div>
@@ -63,17 +59,13 @@
 
     <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
         <div class="flex flex-shrink-0 items-center px-4">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                 alt="Your Company">
+            <img class="h-8 w-auto" src="https://i.ibb.co/27KYPMD/image.png" alt="Recipe Book">
         </div>
         <div class="mt-5 flex flex-grow flex-col">
             <nav class="flex-1 space-y-1 px-2 pb-4">
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Dashboard', menuItem='dashboard', icon='dashboard')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Team', menuItem='team', icon='team')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Projects', menuItem='projects', icon='projects')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Calendar', menuItem='calendar', icon='calendar')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Documents', menuItem='documents', icon='documents')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Reports', menuItem='reports', icon='reports')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/}, title='Головна', menuItem='home', icon='home')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/recipes}, title='Рецепти', menuItem='recipes', icon='recipes')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/addRecipe}, title='Додати рецепт', menuItem='addRecipe', icon='add')"></a>
             </nav>
         </div>
     </div>
