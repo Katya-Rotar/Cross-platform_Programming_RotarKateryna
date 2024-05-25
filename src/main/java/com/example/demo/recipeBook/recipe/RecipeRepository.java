@@ -1,4 +1,4 @@
-package com.example.demo.recipe;
+package com.example.demo.recipeBook.recipe;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.example.demo.recipe;
+package com.example.demo.recipeBook.recipe;
 
 import io.github.wimdeblauwe.jpearl.AbstractEntityId;
 
