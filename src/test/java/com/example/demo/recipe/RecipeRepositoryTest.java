@@ -1,5 +1,6 @@
 package com.example.demo.recipe;
 
+import com.example.demo.recipeBook.recipe.*;
 import io.github.wimdeblauwe.jpearl.InMemoryUniqueIdGenerator;
 import io.github.wimdeblauwe.jpearl.UniqueIdGenerator;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -15,9 +16,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.test.context.ActiveProfiles;
-import com.example.demo.recipeBook.recipe.Recipe;
-import com.example.demo.recipeBook.recipe.RecipeId;
-import com.example.demo.recipeBook.recipe.RecipeRepository;
 
 import javax.sql.DataSource;
 import java.util.UUID;
@@ -49,12 +47,23 @@ class RecipeRepositoryTest {
     @Test
     void testSaveRecipe() {
         RecipeId id = repository.nextId();
-        repository.save(new Recipe(id));
-
+        repository.save(new Recipe(id,
+                new Title("Борщ"),
+                new Ingredients("Вода, капуста, буряк, картопля, морква, цибуля"),
+                new Instructions("1. Наріжте овочі. 2. Варіть у воді. 3. Додайте сіль та спеції."),
+                Difficulty.MEDIUM,
+                Category.MAIN_COURSE));
         entityManager.flush();
 
         UUID idInDb = jdbcTemplate.queryForObject("SELECT id FROM tt_recipes", UUID.class);
         assertThat(idInDb).isEqualTo(id.getId());
+        assertThat(jdbcTemplate.queryForObject("SELECT title FROM tt_recipes", String.class)).isEqualTo("Борщ");
+        assertThat(jdbcTemplate.queryForObject("SELECT ingredients FROM tt_recipes", String.class))
+                .isEqualTo("Вода, капуста, буряк, картопля, морква, цибуля");
+        assertThat(jdbcTemplate.queryForObject("SELECT instructions FROM tt_recipes", String.class))
+                .isEqualTo("1. Наріжте овочі. 2. Варіть у воді. 3. Додайте сіль та спеції.");
+        assertThat(jdbcTemplate.queryForObject("SELECT difficulty FROM tt_recipes", String.class)).isEqualTo("MEDIUM");
+        assertThat(jdbcTemplate.queryForObject("SELECT category FROM tt_recipes", String.class)).isEqualTo("MAIN_COURSE");
     }
 
     @TestConfiguration

@@ -95,7 +95,10 @@
         <artifactId>postgresql</artifactId>
         <scope>runtime</scope>
     </dependency>
-
+    <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>testcontainers</artifactId>
+    </dependency>
     </dependencies>
 
 	<build><resources><resource>
