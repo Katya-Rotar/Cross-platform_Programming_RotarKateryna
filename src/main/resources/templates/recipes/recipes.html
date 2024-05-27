@@ -5,16 +5,79 @@
         layout:decorate="~{layouts/layout}" lang="en"
         th:with="activeMenuItem='recipes'">
 <head>
-    <title>Рецепти</title>
+    <title>Recipes</title>
 </head>
 <body>
 <div layout:fragment="page-content">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <h1 class="text-2xl font-semi bold text-gray-900">Рецепти</h1>
+        <h1 class="text-2xl font-semi bold text-gray-900"
+        th:text="#{recipe.titleRecipe}">Recipes</h1>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div class="py-4">
-            <span>TODO show recipes content</span>
+            <div class="flex flex-col">
+                <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6lg:-mx-8 lg:px-8">
+
+                    <div class="align-middle inline-block min-w-full shadow overflow-hidden rounded-md sm:rounded-lg border-b border-gray-200">
+                        <table class="min-w-full">
+                            <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Title
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Ingredients
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Instructions
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Category
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Difficulty
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="bg-white" th:each="recipe :${recipes}">
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"
+                                    th:text="${recipe.getTitle().asString()}"> 2
+                                    Pizza
+                                </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                    th:text="${recipe.getIngredients().asString()}">
+                                    Flour, Water, Yeast, Salt, Olive Oil, Tomato Sauce, Mozzarella Cheese
+                                </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                    th:text="${recipe.getInstructions().asString()}">
+                                    1. Mix flour, water, yeast, and salt to make the dough.
+                                    2. Let the dough rise for 1 hour.
+                                    3. Preheat the oven to 245°C.
+                                    4. Roll out the dough and place it on a pizza stone or baking sheet.
+                                    5. Spread olive oil over the dough.
+                                    6. Spread tomato sauce over the dough.
+                                    7. Sprinkle mozzarella cheese on top.
+                                    8. Bake for 10-12 minutes until the crust is golden and the cheese is bubbly.
+                                </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                    th:text="${recipe.getDifficulty()}">
+                                    MEDIUM
+                                </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
+                                    th:text="${recipe.getCategory()}">
+                                    MAIN_COURSE
+                                </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
