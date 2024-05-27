@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import jakarta.persistence.EntityManager;
@@ -64,6 +66,43 @@ class RecipeRepositoryTest {
                 .isEqualTo("1. Наріжте овочі. 2. Варіть у воді. 3. Додайте сіль та спеції.");
         assertThat(jdbcTemplate.queryForObject("SELECT difficulty FROM tt_recipes", String.class)).isEqualTo("MEDIUM");
         assertThat(jdbcTemplate.queryForObject("SELECT category FROM tt_recipes", String.class)).isEqualTo("MAIN_COURSE");
+    }
+    @Test
+    void testFindAllPageable(){
+        saveRecipe(8);
+        Sort sort = Sort.by(Sort.Direction.ASC, "title");
+
+        assertThat(repository.findAll(PageRequest.of(0,5, sort)))
+                .hasSize(5)
+                .extracting(recipe -> recipe.getTitle().asString())
+                .containsExactly("Pizza 1", "Pizza 2", "Pizza 3", "Pizza 4", "Pizza 5");
+
+        assertThat(repository.findAll(PageRequest.of(1,5, sort)))
+                .hasSize(3)
+                .extracting(recipe -> recipe.getTitle().asString())
+                .containsExactly("Pizza 6", "Pizza 7", "Pizza 8");
+
+        assertThat(repository.findAll(PageRequest.of(3,5, sort))).isEmpty();
+    }
+
+    private void saveRecipe(int numberOfRecipe){
+        for(int i = 1; i <= numberOfRecipe; i++){
+            repository.save(new Recipe(
+                repository.nextId(),
+                new Title(String.format("Pizza %d", i)),
+                new Ingredients("Flour, Water, Yeast, Salt, Olive Oil, Tomato Sauce, Mozzarella Cheese"),
+                new Instructions("1. Mix flour, water, yeast, and salt to make the dough. " +
+                        "2. Let the dough rise for 1 hour. " +
+                        "3. Preheat the oven to 245°C. " +
+                        "4. Roll out the dough and place it on a pizza stone or baking sheet. " +
+                        "5. Spread olive oil over the dough. " +
+                        "6. Spread tomato sauce over the dough. " +
+                        "7. Sprinkle mozzarella cheese on top. " +
+                        "8. Bake for 10-12 minutes until the crust is golden and the cheese is bubbly."),
+                Difficulty.MEDIUM,
+                Category.MAIN_COURSE
+            ));
+        }
     }
 
     @TestConfiguration
