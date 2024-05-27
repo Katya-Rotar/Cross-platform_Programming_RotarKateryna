@@ -22,56 +22,22 @@
                         <table class="min-w-full">
                             <thead>
                             <tr>
-                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Title
-                                </th>
-                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Ingredients
-                                </th>
-                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Instructions
-                                </th>
-                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Category
-                                </th>
-                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Difficulty
-                                </th>
-                                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                                <th th:replace="~{fragments/table :: header(#{recipe.title})}"></th>
+                                <th th:replace="~{fragments/table :: header(#{recipe.ingredients})}"></th>
+                                <th th:replace="~{fragments/table :: header(#{recipe.instructions})}"></th>
+                                <th th:replace="~{fragments/table :: header(#{recipe.difficulty})}"></th>
+                                <th th:replace="~{fragments/table :: header(#{recipe.category})}"></th>
+                                <th th:replace="~{fragments/table :: header('')}"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="bg-white" th:each="recipe :${recipes}">
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900"
-                                    th:text="${recipe.getTitle().asString()}"> 2
-                                    Pizza
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                                    th:text="${recipe.getIngredients().asString()}">
-                                    Flour, Water, Yeast, Salt, Olive Oil, Tomato Sauce, Mozzarella Cheese
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                                    th:text="${recipe.getInstructions().asString()}">
-                                    1. Mix flour, water, yeast, and salt to make the dough.
-                                    2. Let the dough rise for 1 hour.
-                                    3. Preheat the oven to 245°C.
-                                    4. Roll out the dough and place it on a pizza stone or baking sheet.
-                                    5. Spread olive oil over the dough.
-                                    6. Spread tomato sauce over the dough.
-                                    7. Sprinkle mozzarella cheese on top.
-                                    8. Bake for 10-12 minutes until the crust is golden and the cheese is bubbly.
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                                    th:text="${recipe.getDifficulty()}">
-                                    MEDIUM
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500"
-                                    th:text="${recipe.getCategory()}">
-                                    MAIN_COURSE
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                </td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getTitle().asString()}, primary=true)}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getIngredients().asString()})}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getInstructions().asString()})}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getDifficulty()})}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getCategory()})}"></td>
+                                <td th:replace="~{fragments/table :: dataWithLink(#{recipe.edit}, '#')}"></td>
                             </tr>
                             </tbody>
                         </table>
