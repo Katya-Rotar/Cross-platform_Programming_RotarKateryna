@@ -41,9 +41,9 @@
             </div>
             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="space-y-1 px-2">
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/}, title='Головна', menuItem='home',icon='home')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/recipes}, title='Рецепти', menuItem='recipes', icon='recipes')}"></a>
-                    <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/addRecipe}, title='Додати рецепт', menuItem='addRecipe', icon='add')"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/}, title='Home', menuItem='home',icon='home')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/recipes}, title='Recipes', menuItem='recipes', icon='recipes')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/addRecipe}, title='Add a recipe', menuItem='addRecipe', icon='add')}"></a>
                 </nav>
             </div>
         </div>
@@ -63,9 +63,9 @@
         </div>
         <div class="mt-5 flex flex-grow flex-col">
             <nav class="flex-1 space-y-1 px-2 pb-4">
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/}, title='Головна', menuItem='home', icon='home')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/recipes}, title='Рецепти', menuItem='recipes', icon='recipes')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/addRecipe}, title='Додати рецепт', menuItem='addRecipe', icon='add')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/}, title='Home', menuItem='home', icon='home')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/recipes}, title='Recipes', menuItem='recipes', icon='recipes')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/addRecipe}, title='Add a recipe', menuItem='addRecipe', icon='add')"></a>
             </nav>
         </div>
     </div>
