@@ -22,21 +22,21 @@
                         <table class="min-w-full">
                             <thead>
                             <tr>
-                                <th th:replace="~{fragments/table :: header(#{recipe.title})}"></th>
-                                <th th:replace="~{fragments/table :: header(#{recipe.ingredients})}"></th>
-                                <th th:replace="~{fragments/table :: header(#{recipe.instructions})}"></th>
-                                <th th:replace="~{fragments/table :: header(#{recipe.difficulty})}"></th>
-                                <th th:replace="~{fragments/table :: header(#{recipe.category})}"></th>
+                                <th th:replace="~{fragments/table :: header(title=#{recipe.title})}"></th>
+                                <th th:replace="~{fragments/table :: header(title=#{recipe.ingredients},hideOnMobile=true)}"></th>
+                                <th th:replace="~{fragments/table :: header(title=#{recipe.instructions},hideOnMobile=true)}"></th>
+                                <th th:replace="~{fragments/table :: header(title=#{recipe.difficulty},hideOnMobile=true)}"></th>
+                                <th th:replace="~{fragments/table :: header(title=#{recipe.category},hideOnMobile=true)}"></th>
                                 <th th:replace="~{fragments/table :: header('')}"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="bg-white" th:each="recipe :${recipes}">
                                 <td th:replace="~{fragments/table :: data(contents=${recipe.getTitle().asString()}, primary=true)}"></td>
-                                <td th:replace="~{fragments/table :: data(contents=${recipe.getIngredients().asString()})}"></td>
-                                <td th:replace="~{fragments/table :: data(contents=${recipe.getInstructions().asString()})}"></td>
-                                <td th:replace="~{fragments/table :: data(contents=${recipe.getDifficulty()})}"></td>
-                                <td th:replace="~{fragments/table :: data(contents=${recipe.getCategory()})}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getIngredients().asString()},hideOnMobile=true)}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getInstructions().asString()},hideOnMobile=true)}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getDifficulty()},hideOnMobile=true)}"></td>
+                                <td th:replace="~{fragments/table :: data(contents=${recipe.getCategory()},hideOnMobile=true)}"></td>
                                 <td th:replace="~{fragments/table :: dataWithLink(#{recipe.edit}, '#')}"></td>
                             </tr>
                             </tbody>
