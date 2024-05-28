@@ -1,12 +1,25 @@
 package com.example.demo.addRecipe;
 
+import com.example.demo.recipeBook.NotExistingRecipe;
+import com.example.demo.recipeBook.RecipeValidationGroupOne;
+import com.example.demo.recipeBook.RecipeValidationGroupTwo;
 import com.example.demo.recipeBook.recipe.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
+@NotExistingRecipe(groups = RecipeValidationGroupTwo.class)
 public class CreateRecipeFormData {
+    @NotBlank
+    @Size(min = 2, max = 200, groups = RecipeValidationGroupOne.class)
     private String title;
+    @NotBlank(groups = RecipeValidationGroupOne.class)
     private String ingredients;
+    @NotBlank(groups = RecipeValidationGroupOne.class)
     private String instructions;
+    @NotNull
     private Difficulty difficulty;
+    @NotNull
     private Category category;
 
     public String getTitle() {

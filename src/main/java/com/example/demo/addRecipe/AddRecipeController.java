@@ -1,9 +1,12 @@
 package com.example.demo.addRecipe;
 
+import com.example.demo.recipeBook.RecipeValidationGroupSequence;
 import com.example.demo.recipeBook.recipe.Category;
 import com.example.demo.recipeBook.recipe.Difficulty;
 import com.example.demo.recipeBook.recipe.RecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,8 +33,16 @@ public class AddRecipeController {
     }
 
     @PostMapping
-    public String submitRecipeForm(@ModelAttribute("recipe") CreateRecipeFormData formData,
-                                   Model model) {
+    public String submitRecipeForm(@Validated(RecipeValidationGroupSequence.class)
+                                       @ModelAttribute("recipe") CreateRecipeFormData formData,
+                                   BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("difficulty", List.of(Difficulty.EASY, Difficulty.MEDIUM, Difficulty.HARD,
+                    Difficulty.EXPERT));
+            model.addAttribute("category", List.of(Category.APPETIZER, Category.MAIN_COURSE, Category.DESSERT,
+                    Category.BEVERAGE));
+            return "addRecipe/addRecipe";
+        }
         recipeService.createRecipe(formData.toParameters());
         return "redirect:/recipes";
     }

@@ -8,4 +8,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface RecipeRepository extends CrudRepository<Recipe, RecipeId>,
         PagingAndSortingRepository<Recipe, RecipeId>,
         RecipeRepositoryCustom {
+    boolean existsByTitle(Title title);
 }

@@ -30,4 +30,9 @@ public class RecipeServiceImpl implements RecipeService {
     public Page<Recipe> getRecipes(Pageable pageable) {
         return recipeRepository.findAll(pageable);
     }
+
+    @Override
+    public boolean recipeWithTitleExists(Title title) {
+        return recipeRepository.existsByTitle(title);
+    }
 }
