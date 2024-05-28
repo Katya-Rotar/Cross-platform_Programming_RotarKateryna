@@ -1,0 +1,9 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+
+<div th:fragment="fielderrors"
+     class="rounded-md bg-red-50 p-4 mb-4"
+     th:if="${#fields.hasErrors()}">
+</div>
+</html>
