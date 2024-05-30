@@ -18,7 +18,8 @@
             </h3>
             <div class="mt-2 text-sm text-red-700">
                 <ul class="list-disc pl-5 space-y-1">
-                    <li th:each="err,iter : ${#lists.sort(#fields.detailedErrors(), new com.example.demo.DetailedErrorComparator())}" th:text="${err}"></li> <!--.-->
+                    <li th:each="err,iter : ${#lists.sort(#fields.detailedErrors(),
+                    new com.example.demo.DetailedErrorComparator())}" th:text="${err.getMessage()}"></li> <!--.-->
                 </ul>
             </div>
         </div>

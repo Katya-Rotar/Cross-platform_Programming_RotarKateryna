@@ -2,12 +2,13 @@ package com.example.demo.recipeBook.recipe;
 
 import io.github.wimdeblauwe.jpearl.AbstractEntity;
 
+import io.github.wimdeblauwe.jpearl.AbstractVersionedEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tt_recipes")
-public class Recipe extends AbstractEntity<RecipeId> {
+public class Recipe extends AbstractVersionedEntity<RecipeId> {
 
     @NotNull
     @Convert(converter = TitleAttributeConverter.class)
@@ -65,5 +66,25 @@ public class Recipe extends AbstractEntity<RecipeId> {
 
     public Category getCategory() {
         return category;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
+    public void setIngredients(Ingredients ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setInstructions(Instructions instructions) {
+        this.instructions = instructions;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

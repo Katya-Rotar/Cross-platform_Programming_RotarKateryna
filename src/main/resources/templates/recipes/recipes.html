@@ -37,7 +37,7 @@
                                 <td th:replace="~{fragments/table :: data(contents=${recipe.getInstructions().asString()},hideOnMobile=true)}"></td>
                                 <td th:replace="~{fragments/table :: data(contents=${recipe.getDifficulty()},hideOnMobile=true)}"></td>
                                 <td th:replace="~{fragments/table :: data(contents=${recipe.getCategory()},hideOnMobile=true)}"></td>
-                                <td th:replace="~{fragments/table :: dataWithLink(#{recipe.edit}, '#')}"></td>
+                                <td th:replace="~{fragments/table :: dataWithLink(#{recipe.edit}, @{'/'+ ${activeMenuItem} + '/'+${recipe.id.asString()}})}"></td>
                             </tr>
                             </tbody>
                         </table>
