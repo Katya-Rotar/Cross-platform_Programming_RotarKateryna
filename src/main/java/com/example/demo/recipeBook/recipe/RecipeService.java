@@ -11,4 +11,6 @@ public interface RecipeService {
     Page<Recipe> getRecipes(Pageable pageable);
     boolean recipeWithTitleExists(Title title);
     Recipe editRecipe(RecipeId recipeId, EditRecipeParameters recipeParameters);
+
+    void deleteRecipe(RecipeId recipeId);
 }

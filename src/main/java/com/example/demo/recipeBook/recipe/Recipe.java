@@ -1,7 +1,5 @@
 package com.example.demo.recipeBook.recipe;
 
-import io.github.wimdeblauwe.jpearl.AbstractEntity;
-
 import io.github.wimdeblauwe.jpearl.AbstractVersionedEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

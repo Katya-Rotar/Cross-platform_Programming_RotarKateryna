@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -56,6 +57,17 @@ public class RecipesController {
             return "addRecipe/addRecipe";
         }
         recipeService.editRecipe(recipeId, formData.toParameters());
+        return "redirect:/recipes";
+    }
+
+    @PostMapping("/{id}/delete")
+    public String deleteRecipe(@PathVariable("id") RecipeId recipeId,
+                               RedirectAttributes redirectAttributes){
+        Recipe recipe = recipeService
+                .getRecipe(recipeId)
+                .orElseThrow(()-> new RecipeNotFoundException(recipeId));
+        recipeService.deleteRecipe(recipeId);
+        redirectAttributes.addFlashAttribute("deletedTitle", recipe.getTitle());
         return "redirect:/recipes";
     }
 }

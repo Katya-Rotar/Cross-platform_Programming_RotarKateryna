@@ -55,4 +55,9 @@ public class RecipeServiceImpl implements RecipeService {
         recipeParameters.update(recipe);
         return recipe;
     }
+
+    @Override
+    public void deleteRecipe(RecipeId recipeId) {
+        recipeRepository.deleteById(recipeId);
+    }
 }
