@@ -11,6 +11,9 @@
 </head>
 <body>
 <div layout:fragment="page-content">
+    <div th:if="${deletedTitle}">
+        <div th:replace="fragments/alerts :: success(#{recipe.delete.success(${deletedTitle.asString()})})"></div>
+    </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <h1 class="text-2xl font-semi bold text-gray-900"
         th:text="#{recipe.titleRecipe}">Recipes</h1>
@@ -55,6 +58,7 @@
             </div>
         </div>
     </div>
+    <script th:replace="~{fragments/alerts :: success-js}"></script>
 </div>
 <div layout:fragment="modals-content" x-data="modalDeleteConfirmation()">
     <div x-show="isVisible()"

@@ -29,7 +29,7 @@ public class RecipesController {
     }
 
     @GetMapping("/{id}")
-    public String editTeamMemberForm(@PathVariable("id") RecipeId recipeId,
+    public String editRecipeForm(@PathVariable("id") RecipeId recipeId,
                                      Model model) {
         Recipe recipe = recipeService
                 .getRecipe(recipeId)

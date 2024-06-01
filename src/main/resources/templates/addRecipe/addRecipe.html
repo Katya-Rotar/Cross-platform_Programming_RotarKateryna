@@ -18,7 +18,7 @@
             <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
                 <form id="recipe-form"
                       th:object="${recipe}"
-                      th:action="${editMode?.name()=='UPDATE'}?@{/recipes/{id}(id=${recipe.id})}:@{/recipes}"
+                      th:action="${editMode?.name()=='UPDATE'}?@{/recipes/{id}(id=${recipe.id})}:@{/addRecipe}"
                       method="post">
                     <div>
                         <div th:replace="fragments/forms :: fielderrors"></div>
