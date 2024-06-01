@@ -4,5 +4,5 @@ import jakarta.validation.GroupSequence;
 import jakarta.validation.groups.Default;
 
 @GroupSequence({Default.class, RecipeValidationGroupOne.class, RecipeValidationGroupTwo.class})
-public interface RecipeValidationGroupSequence {
+public interface CreateRecipeValidationGroupSequence {
 }

@@ -1,16 +1,13 @@
 package com.example.demo.addRecipe;
 
-import com.example.demo.recipeBook.RecipeValidationGroupSequence;
+import com.example.demo.recipeBook.CreateRecipeValidationGroupSequence;
 import com.example.demo.recipeBook.recipe.Category;
 import com.example.demo.recipeBook.recipe.Difficulty;
 import com.example.demo.recipeBook.recipe.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -33,7 +30,7 @@ public class AddRecipeController {
     }
 
     @PostMapping
-    public String submitRecipeForm(@Validated(RecipeValidationGroupSequence.class)
+    public String submitRecipeForm(@Validated(CreateRecipeValidationGroupSequence.class)
                                        @ModelAttribute("recipe") CreateRecipeFormData formData,
                                    BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
